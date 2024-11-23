@@ -53,12 +53,7 @@ const ContactForm: React.FC = () => {
         <Typography variant="h4" component="h1" gutterBottom align="center">
           Contact Us
         </Typography>
-        <Box
-          component="form"
-          noValidate
-          autoComplete="off"
-          onSubmit={handleSubmit}
-        >
+        <Box component="form" autoComplete="off" onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             {/* First Name */}
             <Grid item xs={12} sm={6}>
