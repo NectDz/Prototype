@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { Box, Card, CardHeader, CardContent, Skeleton } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardHeader,
+  CardContent,
+  Skeleton,
+  Stack,
+} from "@mui/material";
 import UpdateCard from "./UpdateCard";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../../firebase-config";
@@ -76,17 +83,19 @@ const UpdateCarousel = () => {
 
   return (
     <Box sx={{ padding: 2 }}>
-      {updates.map((update) => (
-        <UpdateCard
-          key={update.id}
-          heading={update.title}
-          body={update.body}
-          avatarSrc={getAvatarByAuthor(update.author)}
-          author={update.author}
-          time={update.timePosted || { seconds: 0, nanoseconds: 0 }} // Provide default value
-          thumbnailSrc={update.thumbnailURL}
-        />
-      ))}
+      <Stack spacing={4}>
+        {updates.map((update) => (
+          <UpdateCard
+            key={update.id}
+            heading={update.title}
+            body={update.body}
+            avatarSrc={getAvatarByAuthor(update.author)}
+            author={update.author}
+            time={update.timePosted || { seconds: 0, nanoseconds: 0 }} // Provide default value
+            thumbnailSrc={update.thumbnailURL}
+          />
+        ))}
+      </Stack>
     </Box>
   );
 };
